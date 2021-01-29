@@ -12,11 +12,17 @@ spec:
         app: hellodotnet5-pod
     spec:
       containers:
-      - name: hellodotnet5-container
-        image: heliosdevreg.azurecr.io/hellodotnet5:v1
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 80
+        - name: hellodotnet5-container
+          image: pkodicalcr.azurecr.io/hellodotnet5:v5
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+          env:
+              - name: ServiceSettings__ApiKey
+                valueFrom:
+                  secretKeyRef:
+                    name: hellodotnet5-secrets
+                    key: settings-apikey

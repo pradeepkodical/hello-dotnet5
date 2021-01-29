@@ -20,9 +20,9 @@ namespace HelloDotnet5
             var reply = await ping.SendPingAsync(Settings.OpenWeatherHost);
             if (reply.Status != IPStatus.Success)
             {
-                return HealthCheckResult.Unhealthy();
+                return HealthCheckResult.Unhealthy(description: $"{reply.Status} = {Settings.OpenWeatherHost}");
             }
-            return HealthCheckResult.Healthy();
+            return HealthCheckResult.Healthy("Good");
         }
     }
 }
