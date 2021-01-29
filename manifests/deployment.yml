@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: hellodotnet5 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellodotnet5
+  template:
+    metadata:
+      labels:
+        app: hellodotnet5 
+    spec:
+      containers:
+        - name: hellodotnet5 
+          image: pkodical.azurecr.io/hellodotnet5
+          ports:
+          - containerPort: 8080
