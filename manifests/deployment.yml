@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "pkodicalkube-b0a8"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "pkodicalkube-b0a8"
+  template:
+    metadata:
+      labels:
+        app: "pkodicalkube-b0a8"
+    spec:
+      containers:
+        - name: "pkodicalkube-b0a8"
+          image: "pkodical.azurecr.io/pkodicalkube"
+          ports:
+          - containerPort: 80
